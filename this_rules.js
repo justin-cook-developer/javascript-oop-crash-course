@@ -35,7 +35,7 @@ foo(); // logs "In foo: On the global object"
 const obj1 = {
   a: "In obj1",
   // same function as above, but in an object
-  foo,
+  foo: foo,
 };
 
 // this is the call site; foo is called as a property of obj1
@@ -95,8 +95,8 @@ console.log("using .bind w currying:", weirdAddToInvokeLater()); // logs 5
 // applying the `new` keyword to a function invocation, does the following
 // 1. creates a new, empty object
 // 2. the newly constructed object is [[Prototype]] linked
-// 2. sets the function's `this` context to be that object
-// 3. unless the function returns it's own alternate object, the new invoked function call will automatically return the newly constructed object
+// 3. sets the function's `this` context to be that object
+// 4. unless the function returns it's own alternate object, the new invoked function call will automatically return the newly constructed object
 
 function yeet(a) {
   this.a = a;
@@ -105,6 +105,24 @@ function yeet(a) {
 const objWithA = new yeet(3);
 
 console.log("objWithA:", objWithA);
+
+// { maker: '', model: '', year: 31232 }
+
+function Car(maker, model, year, value) {
+  this.maker = maker;
+  this.model = model;
+  this.year = year;
+  this.value = value;
+}
+
+const cars = [
+  new Car("Toyota", "Tundra", 2004, 5000),
+  new Car("Toyota", "Tacoma", 2006, 5000),
+];
+
+cars[0].increaseValue(500);
+
+console.log(cars);
 
 // ---------------------------------------------------------------------------------
 

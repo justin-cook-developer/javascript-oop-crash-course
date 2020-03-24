@@ -3,7 +3,6 @@
 // 1. example of thinking `this` is the function
 
 // we want to count the number of times a function, foo, executes
-
 function foo(number) {
   console.log("In foo:", number);
 
@@ -35,7 +34,7 @@ console.log("count var:", count); // NaN ??? Weird. We created a global variable
 // talk about using let/var/const v.s. no keyword; how this affects global object
 // if no variable declaration keyword, code below works; if keyword, doesn't work
 // note differences between adding to node vs browser global
-let count2 = 0;
+count2 = 0;
 
 console.log("init count2 var:", global.count2);
 
