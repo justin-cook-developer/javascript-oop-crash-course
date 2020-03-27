@@ -22,6 +22,15 @@ myObj.b = "no can do buckeroo";
 
 console.log("myObj.b:", myObj.b); // 4
 
+Object.defineProperty(myObj, "b", {
+  value: 8,
+  writable: false,
+  enumerable: true,
+  configurable: true,
+});
+
+console.log("myObj.b:", myObj.b);
+
 // enumerable: control whether a property is visible during iteration
 Object.defineProperty(myObj, "c", {
   value: 5,
@@ -94,7 +103,7 @@ Object.defineProperty(person, "age", {
   },
   set(val) {
     if (typeof val !== "number") {
-      throw new Error("age can only be a number");
+      throw new TypeError("age can only be a number");
     }
 
     if (val < 0) {
@@ -108,3 +117,5 @@ Object.defineProperty(person, "age", {
 person.age = 3;
 
 console.log("person.age with getter:", person.age);
+
+person.age = "3";
