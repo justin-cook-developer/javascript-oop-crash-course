@@ -1,4 +1,4 @@
-// Constructor Functions: one JS OOP way to create objects
+// Constructor Functions: one JS OOP way to create objects. But really the only way.
 
 function Person(name, age, email) {
   this.name = name;
@@ -45,7 +45,7 @@ console.log(
 );
 
 // each instance of Person2 has it's own getOlder function, that's a lot of memory...
-// getOlder() is not specific to any one Person2; it is reusable due to the dynamic nature of this
+// getOlder() is not specific to any one Person2; it is reusable due to the dynamic nature of `this`
 // where else could we put this method???
 
 // ---------------------------------------------------------------------------------
@@ -80,3 +80,7 @@ const e = new Person3("e", 21, "e@email.com");
 
 // all instances of Person3 have the same getOlder function... DRY and memory savings
 console.log("\nblake.getOlder === e.getOlder", blake.getOlder === e.getOlder);
+
+blake.getOlder();
+
+console.log(blake.toString());
